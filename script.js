@@ -54,7 +54,7 @@ async function updateInfo() {
 
     physicalAddress.innerHTML = data.location.city + ', ' + data.location.region + ' ' + data.location.postalCode;
 
-    timezone.innerHTML = data.location.timezone.abbreviation + ' ' + data.location.timezone;
+    timezone.innerHTML = data.location.timezone;
 
     isp.innerHTML = data.isp;
 }
