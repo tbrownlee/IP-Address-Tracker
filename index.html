@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+        integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+        integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin="" defer></script>
+
+    <title>IP Address Tracker | Frontend Mentor</title>
+</head>
+
+<body>
+    <img class="img-background-pattern" src="./images/pattern-bg.png" alt="Background pattern">
+    <div class="text-and-input-section">
+        <h1 class="heading">IP Address Tracker</h1>
+        <div class="input-and-arrow-container">
+            <input class="input" type="text" name="" placeholder="Search for any IP address or domain">
+            <button class="button">
+                <img src="./images/icon-arrow.svg" alt="Arrow icon">
+            </button>
+        </div>
+        <div class="information-display-section">
+            <div class="information-container">
+                <h2 class="info-title">IP ADDRESS</h2>
+                <p class="ip-address"></p>
+            </div>
+            <div class="information-container">
+                <h2 class="info-title">LOCATION</h2>
+                <p class="physical-address"></p>
+            </div>
+            <div class="information-container">
+                <h2 class="info-title">TIMEZONE</h2>
+                <p class="timezone"></p>
+            </div>
+            <div class="information-container">
+                <h2 class="info-title">ISP</h2>
+                <p class="isp"></p>
+            </div>
+        </div>
+    </div>
+    <div id="map">
+
+    </div>
+</body>
+
+<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+    integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+
+</html>
