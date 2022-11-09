@@ -19,7 +19,10 @@ button.addEventListener('click', () => {
     inputValue = input.value;
     if (ValidateIPaddress(inputValue)) {
         updateInfo();
-        updateMap();
+        setTimeout(() => {
+            updateMap();
+        }, "1000")
+
     } else {
         alert("You have entered an invalid IP address!");
     }
@@ -33,7 +36,7 @@ function ValidateIPaddress(ipaddress) {
 }
 
 async function getData() {
-    let url = 'https://geo.ipify.org/api/v2/country,city?apiKey=at_WmvrUNIIPysjwd8StHd1sG40OlxLE&ipAddress=' + `${inputValue}`;
+    let url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=6440c21ec108472aa292415b5396d054&ip_address=' + `${inputValue}`;
 
     try {
         let response = await fetch(url, {
@@ -50,13 +53,17 @@ async function getData() {
 
 async function updateInfo() {
     let data = await getData();
-    ipAddress.innerHTML = data.ip;
+    ipAddress.innerHTML = data.ip_address;
 
-    physicalAddress.innerHTML = data.location.city + ', ' + data.location.region + ' ' + data.location.postalCode;
+    if (data.city != null) {
+        physicalAddress.innerHTML = data.city + ', ' + data.region_iso_code + ' ' + data.postal_code;
+    } else {
+        physicalAddress.innerHTML = 'Unknown';
+    }
 
-    timezone.innerHTML = data.location.timezone;
+    timezone.innerHTML = data.timezone.abbreviation + ' ' + data.timezone.current_time;
 
-    isp.innerHTML = data.isp;
+    isp.innerHTML = data.connection.isp_name;
 }
 
 updateInfo();
@@ -71,13 +78,9 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 async function updateMap() {
     let data = await getData();
 
-    console.log(data);
+    map.setView([data.latitude, data.longitude]);
 
-    console.log(Intl.DateTimeFormat().resolvedOptions().timeZone)
-
-    map.setView([data.location.lat, data.location.lng]);
-
-    let marker = L.marker([data.location.lat, data.location.lng]).addTo(map);
+    let marker = L.marker([data.latitude, data.longitude]).addTo(map);
 }
 
 updateMap();
