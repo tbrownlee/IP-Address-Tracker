@@ -162,6 +162,23 @@ main {
 
 
 
+@media only screen and (min-width: 31rem) {
+    .button:hover {
+        cursor: pointer;
+
+        background-color: var(--very-dark-gray);
+    }
+}
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 37rem) {
     .heading {
         margin-bottom: 2.6rem;
@@ -186,12 +203,6 @@ main {
         font-size: 1.7rem;
     }
 
-    .button:hover {
-        cursor: pointer;
-
-        background-color: var(--very-dark-gray);
-    }
-
     .information-display-section {
         flex-direction: row;
         justify-content: space-between;
@@ -214,7 +225,8 @@ main {
 
     .information-container:not(:last-of-type) {
         margin-bottom: 0;
-        border-right: .2rem solid hsla(0, 0%, 59%, .4);;
+        border-right: .2rem solid hsla(0, 0%, 59%, .4);
+        ;
     }
 
     .info-title {
