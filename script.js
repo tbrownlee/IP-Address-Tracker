@@ -14,7 +14,7 @@ let inputValue = '';
 
 
 
-
+/* I set a timeout here because the API only allows one call per second */
 button.addEventListener('click', () => {
     inputValue = input.value;
     if (ValidateIPaddress(inputValue)) {
@@ -66,8 +66,6 @@ async function updateInfo() {
     isp.innerHTML = data.connection.isp_name;
 }
 
-updateInfo();
-
 map = L.map('map', { zoomControl: false }).setView([51.505, -0.09], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
@@ -78,9 +76,16 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 async function updateMap() {
     let data = await getData();
 
+    if (data.city == null) {
+        return;
+    }
+
     map.setView([data.latitude, data.longitude]);
 
     let marker = L.marker([data.latitude, data.longitude]).addTo(map);
 }
 
-updateMap();
+updateInfo();
+setTimeout(() => {
+    updateMap();
+}, "1500")
