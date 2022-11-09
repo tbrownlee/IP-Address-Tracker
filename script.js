@@ -25,6 +25,7 @@ button.addEventListener('click', () => {
 
     } else {
         alert("You have entered an invalid IP address!");
+        input.value = '';
     }
 });
 
@@ -40,7 +41,6 @@ async function getData() {
 
     try {
         let response = await fetch(url, {
-            apiKey: '',
             ipAddress: inputValue,
             cache: 'no-cache',
         });
