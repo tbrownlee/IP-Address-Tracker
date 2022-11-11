@@ -212,6 +212,8 @@ main {
 
         width: auto;
         padding: 3rem;
+
+        text-align: left;
     }
 
     .information-container {
