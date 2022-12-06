@@ -27,7 +27,7 @@ Users should be able to:
 
 Screenshot is coming soon
 
-![](./screenshot.jpg)
+![Screenshot](./images/Screenshot%202022-12-06%20at%2009-19-11%20IP%20Address%20Tracker%20Frontend%20Mentor.png);
 
 ### Links
 
