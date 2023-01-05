@@ -1,20 +1,14 @@
-# Frontend Mentor - IP address tracker solution
-
-This is a solution to the [IP address tracker challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/ip-address-tracker-I8-0yYAH0). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+# IP Address Tracker  
 
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-- [Author](#author)
 
 ## Overview
-
-### The challenge
 
 Users should be able to:
 
@@ -24,8 +18,6 @@ Users should be able to:
 - Search for any IP addresses or domains and see the key information and location
 
 ### Screenshot
-
-Screenshot is coming soon
 
 ![Screenshot](./images/Screenshot%202022-12-06%20at%2009-19-11%20IP%20Address%20Tracker%20Frontend%20Mentor.png);
 
@@ -43,7 +35,4 @@ Screenshot is coming soon
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-
-## Author
-
-- Frontend Mentor - [@tbrownlee](https://www.frontendmentor.io/profile/tbrownlee)
+- JavaScript 
