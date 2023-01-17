@@ -14,23 +14,15 @@ let inputValue = '';
 
 
 
-updateInfo();
-updateMap();
-
-
-
-map = L.map('map', { zoomControl: false }).setView([51.505, -0.09], 13);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
-
-
+/* I set a timeout here because the API only allows one call per second */
 button.addEventListener('click', () => {
     inputValue = input.value;
     if (ValidateIPaddress(inputValue)) {
         updateInfo();
-        updateMap();
+        setTimeout(() => {
+            updateMap();
+        }, "1000")
+
     } else {
         alert("You have entered an invalid IP address!");
         input.value = '';
@@ -45,7 +37,7 @@ function ValidateIPaddress(ipaddress) {
 }
 
 async function getData() {
-    let url = 'http://ipwho.is/' + `${inputValue}`;
+    let url = 'https://ipgeolocation.abstractapi.com/v1/?api_key=6440c21ec108472aa292415b5396d054&ip_address=' + `${inputValue}`;
 
     try {
         let response = await fetch(url, {
@@ -64,18 +56,25 @@ async function updateInfo() {
 
     console.log(data);
 
-    ipAddress.innerHTML = data.ip;
+    ipAddress.innerHTML = data.ip_address;
 
     if (data.city != null) {
-        physicalAddress.innerHTML = data.city + ', ' + data.region_code + ' ' + data.postal;
+        physicalAddress.innerHTML = data.city + ', ' + data.region_iso_code + ' ' + data.postal_code;
     } else {
         physicalAddress.innerHTML = 'Unknown';
     }
 
-    timezone.innerHTML = data.timezone.abbr + ' ' + data.timezone.utc;
+    timezone.innerHTML = data.timezone.abbreviation + ' ' + data.timezone.current_time;
 
-    isp.innerHTML = data.connection.isp;
+    isp.innerHTML = data.connection.isp_name;
 }
+
+map = L.map('map', { zoomControl: false }).setView([51.505, -0.09], 13);
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
 
 async function updateMap() {
     let data = await getData();
@@ -88,3 +87,8 @@ async function updateMap() {
 
     let marker = L.marker([data.latitude, data.longitude]).addTo(map);
 }
+
+updateInfo();
+setTimeout(() => {
+    updateMap();
+}, "1500")
