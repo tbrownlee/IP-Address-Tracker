@@ -45,7 +45,7 @@ function ValidateIPaddress(ipaddress) {
 }
 
 async function getData() {
-    let url = 'http://ipwho.is/' + `${inputValue}`;
+    let url = 'https://ipwho.is/' + `${inputValue}`;
 
     try {
         let response = await fetch(url, {
